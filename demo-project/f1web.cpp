@@ -15,6 +15,9 @@ class factorial {
            myf = cumul;
         }
     }
+    /** Gets the factorial
+    *
+    */
     unsigned long getf() {
         return myf;
     }
@@ -25,14 +28,14 @@ class factorial {
          ss << " is ";
          ss << myf;
          return ss.str();
-    }    
+    }
+
     private:
         unsigned long myf;
         unsigned long mynum;
 };
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     std::cout << "content-type: text/html" << std::endl << std::endl;
     std::cout << "<h1>Greatest program ever. Calculates factorials.</h1>" << std::endl;
     if (argc > 1) {
