@@ -56,8 +56,14 @@ int main(int argc, char *argv[]) {
     }
     // if either: num > 0
     if (num > 0) {
-        factorial f1(num);
-        std::cout << f1.speak() << "\n";
+        if (num > 33) {
+           std::cout << "Too large\n";
+        }
+        else
+        {
+            factorial f1(num);
+            std::cout << f1.speak() << "\n";
+        }
     } else {
         std::cout << "You should call this program with a parameter. By web: programname?number or  programname?f=number\n";
     }
