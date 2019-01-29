@@ -40,6 +40,7 @@ function digest_login()
     {
        // ok, valid username & password
        echo 'You are logged in as: ' . $data['username'];
+       return $data['username'];
     }
 }
 
@@ -61,7 +62,8 @@ function http_digest_parse($txt)
     return $needed_parts ? false : $data;
 }
 
-digest_login();
-
+$name = digest_login();
+session_start();
+$_SESSION['username'] = $name;
 ?>
 
