@@ -21,6 +21,7 @@ class User {
     $sql = "insert into nametable(firstname, surname, dnumber) values(\"".$this->firstname."\",\"".$this->surname."\",".$this->deptno.")";
     //print($sql);
     if  (!$conn->query($sql)) { return $conn->error; }
+    $conn->close();
     return "ok";
   }
 };
@@ -53,17 +54,17 @@ function display_user_dept_form() {
 }
 
 function store_name_data() {
-  //require('cvar.php');
-  //$conn = new mysqli($servername, $username, $password, $dbname);
-
   //get stuff from variables
   $u = $_POST['user_name'];
   $l = $_POST['last_name'];
   $d = $_POST['dept'];
-  $person = new User($u,$l,$d);
+  $u1 = filter_var($u);
+  $l1 = filter_var($l);
+  $d1 = filter_var($d);
+
+  $person = new User($u1,$l1,$d1);
   $res = $person->store();
   print($res);
-  //$conn->close();
 }
 
 
