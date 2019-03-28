@@ -42,6 +42,7 @@ function display_user_dept_form() {
   $conn->close();
 
   print("<form class=\"text-center border border-light p-5\" method=\"post\" action=\"$_SERVER[PHP_SELF]\">");
+  print("<input name=\"route\" value=\"to-store-name-data\" type=\"hidden\"/>");
   print("First name: <input class=\"form-control mb-4\" required=\"true\" type=\"text\" name=\"user_name\">");
   print("<br/>");
   print("Last name: <input class=\"form-control mb-4\" required=\"true\" type=\"text\" name=\"last_name\">");
@@ -116,7 +117,9 @@ function http_digest_parse($txt) {
 }
 $name = digest_login();
 session_start();
-if (isset($_POST['user_name'])) {
+$route = "";
+if (isset($_POST['route'])) { $route = $_POST['route']; }
+if ($route == "to-store-name-data") {
   store_name_data();
 } else {
   display_user_dept_form();
